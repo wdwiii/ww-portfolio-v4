@@ -7,6 +7,7 @@ import {
   CssBaseline,
   Theme,
 } from '@mui/material'
+import { blueGrey } from '@mui/material/colors'
 import { Roboto } from 'next/font/google'
 import { NextAppDirEmotionCacheProvider } from './EmotionCache'
 
@@ -20,7 +21,12 @@ const themeOptions: ThemeOptions = {
   typography: {
     fontFamily: roboto.style.fontFamily,
   },
+  palette: {
+    background: { default: blueGrey[900] },
+    text: { primary: blueGrey[50] },
+  },
 }
+
 const theme: Theme = createTheme(themeOptions)
 
 export default function ThemeRegistry({
