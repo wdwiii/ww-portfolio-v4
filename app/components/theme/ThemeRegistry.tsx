@@ -6,9 +6,11 @@ import {
   createTheme,
   CssBaseline,
   Theme,
+  responsiveFontSizes,
 } from '@mui/material'
 import { blueGrey } from '@mui/material/colors'
-import { Roboto } from 'next/font/google'
+import { Roboto, Allura, Expletus_Sans, Hind } from 'next/font/google'
+
 import { NextAppDirEmotionCacheProvider } from './EmotionCache'
 
 const roboto = Roboto({
@@ -17,17 +19,43 @@ const roboto = Roboto({
   subsets: ['latin'],
 })
 
+const expletusSans = Expletus_Sans({ weight: '400', subsets: ['latin'] })
+
+const hind = Hind({ weight: '400', subsets: ['latin'] })
+
+let theme: Theme = createTheme()
+
 const themeOptions: ThemeOptions = {
   typography: {
-    fontFamily: roboto.style.fontFamily,
+    fontFamily: [hind.style.fontFamily].join(', '),
+    display1: {
+      fontFamily: expletusSans.style.fontFamily,
+      fontSize: theme.typography.h2.fontSize,
+      [theme.breakpoints.down('sm')]: {
+        fontSize: theme.typography.h3.fontSize,
+        lineHeight: '3.5rem',
+      },
+    },
+    display2: {
+      fontFamily: expletusSans.style.fontFamily,
+      fontSize: theme.typography.h4.fontSize,
+      [theme.breakpoints.down('sm')]: {
+        fontSize: theme.typography.h5.fontSize,
+        lineHeight: '3.5rem',
+      },
+    },
+    h2: { fontWeight: 100 },
   },
   palette: {
-    background: { default: blueGrey[900] },
-    text: { primary: blueGrey[50] },
+    secondary: { main: '#6BE3D2' },
+    background: { default: blueGrey[50] },
+    // text: { primary: blueGrey[50] },
   },
 }
 
-const theme: Theme = createTheme(themeOptions)
+theme = createTheme(themeOptions)
+
+theme = responsiveFontSizes(theme)
 
 export default function ThemeRegistry({
   children,
@@ -42,4 +70,25 @@ export default function ThemeRegistry({
       </ThemeProvider>
     </NextAppDirEmotionCacheProvider>
   )
+}
+
+declare module '@mui/material/styles' {
+  interface TypographyVariants {
+    display1: React.CSSProperties
+    display2: React.CSSProperties
+  }
+
+  // allow configuration using `createTheme`
+  interface TypographyVariantsOptions {
+    display1?: React.CSSProperties
+    display2?: React.CSSProperties
+  }
+}
+
+// Update the Typography's variant prop options
+declare module '@mui/material/Typography' {
+  interface TypographyPropsVariantOverrides {
+    display1: true
+    display2: true
+  }
 }
