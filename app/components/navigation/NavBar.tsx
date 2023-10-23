@@ -3,6 +3,7 @@
 import { Brightness4Outlined } from '@mui/icons-material'
 import {
   Box,
+  BoxProps,
   Container,
   ContainerProps,
   IconButton,
@@ -15,12 +16,12 @@ import MobileNavMenu from './MobileNavMenu'
 import NavLogo from './NavLogo'
 import NavMenu from './NavMenu'
 
-export default function NavBar(props: ContainerProps) {
+export default function NavBar(props: BoxProps) {
   const theme = useTheme()
   const matches = useMediaQuery(theme.breakpoints.up('lg'))
 
   return (
-    <Container maxWidth='xl' {...props}>
+    <Box {...props} width='100%' maxWidth={1700}>
       <Stack
         direction='row'
         alignItems={'center'}
@@ -36,12 +37,12 @@ export default function NavBar(props: ContainerProps) {
       >
         {matches ? (
           <>
-            <NavLogo height={30} src='/assets/color-logo.png' />
+            <NavLogo height={30} src='/assets/logo.png' />
             <NavMenu />
           </>
         ) : (
           <>
-            <MobileNavLogo height={30} src='/assets/secondary-logo-color.png' />
+            <MobileNavLogo height={30} src='/assets/secondary-logo.png' />
             <MobileNavMenu />
           </>
         )}
@@ -61,6 +62,6 @@ export default function NavBar(props: ContainerProps) {
           </IconButton>
         </Box>
       </Stack>
-    </Container>
+    </Box>
   )
 }

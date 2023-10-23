@@ -20,7 +20,6 @@ export default function RootLayout({
 }) {
   return (
     <>
-      <CssBaseline />
       <ThemeRegistry>
         <html lang='en' style={{ height: '100%' }}>
           <body
@@ -30,8 +29,12 @@ export default function RootLayout({
             }}
           >
             <HideOnScroll>
-              <AppBar color='transparent' elevation={0} sx={{ py: 5 }}>
-                <Toolbar>
+              <AppBar color='transparent' elevation={0} sx={{ py: 4 }}>
+                <Toolbar
+                  sx={{
+                    justifyContent: 'center',
+                  }}
+                >
                   <NavBar />
                 </Toolbar>
               </AppBar>
