@@ -1,5 +1,11 @@
-import Image from 'next/image'
+import Hero from './components/homepage/Hero'
+import ImageGallery from './components/homepage/ImageGallery'
 
 export default function Home() {
-  return <h1>Hello from the homepage</h1>
+  return (
+    <>
+      <Hero />
+      <ImageGallery />
+    </>
+  )
 }
