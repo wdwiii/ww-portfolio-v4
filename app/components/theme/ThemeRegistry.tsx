@@ -47,8 +47,10 @@ const themeOptions: ThemeOptions = {
     h2: { fontWeight: 100 },
   },
   palette: {
-    secondary: { main: '#6BE3D2' },
+    primary: { main: '#0E343E' },
+    secondary: { main: '#F9BE4A' },
     background: { default: blueGrey[50] },
+
     // text: { primary: blueGrey[50] },
   },
 }
