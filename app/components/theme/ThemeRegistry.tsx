@@ -49,7 +49,7 @@ const themeOptions: ThemeOptions = {
   palette: {
     primary: { main: '#0E343E' },
     secondary: { main: '#F9BE4A' },
-    background: { default: blueGrey[50] },
+    background: { default: 'f7f7f7' },
 
     // text: { primary: blueGrey[50] },
   },
