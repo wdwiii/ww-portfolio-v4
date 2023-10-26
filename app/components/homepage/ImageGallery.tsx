@@ -14,13 +14,12 @@ const ImageGallery = () => {
     >
       <Container
         maxWidth='lg'
-        sx={{ bgcolor: 'white', height: { xs: 225, sm: 450 } }}
+        sx={{ bgcolor: 'white', height: { xs: 400, sm: 500 } }}
       />
       <Stack
         direction='row'
         spacing={3}
         justifyContent='center'
-        width={1700}
         flexShrink={0}
         position='absolute'
         sx={{ width: { xs: 1000, sm: 1700 } }}

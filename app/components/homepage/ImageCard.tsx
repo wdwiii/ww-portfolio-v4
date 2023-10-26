@@ -6,7 +6,7 @@ const ImageCard = ({ src }: { src: string }) => {
   return (
     <Card
       sx={{
-        height: { xs: 250, sm: 330 },
+        height: { xs: 400, sm: 500 },
         flexShrink: 0,
         flexGrow: 1,
         background: 'hsl(30, 100%, 85%)',

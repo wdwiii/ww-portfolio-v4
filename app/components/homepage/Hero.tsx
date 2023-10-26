@@ -8,7 +8,7 @@ export default function Hero() {
   return (
     <Section>
       <Container maxWidth='lg'>
-        <Grid container sx={{ pt: 18, pb: 9 }}>
+        <Grid container sx={{ pt: 18, pb: 10 }}>
           <Grid lg={8}>
             <Typography variant='h1'>Coding, Basketball, and Music</Typography>{' '}
             <Typography variant='body1' gutterBottom>
