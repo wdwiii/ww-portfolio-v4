@@ -1,8 +1,8 @@
-import Section from '../../components/ui/Section'
-import { Typography, Stack, IconButton } from '@mui/material'
-import { Airlines, DirtyLens, Iso, TwoWheeler } from '@mui/icons-material'
-import Container from '../../components/ui/Container'
+import { GitHub, Headphones, Instagram, LinkedIn } from '@mui/icons-material'
+import { IconButton, Stack, Typography } from '@mui/material'
 import Grid from '@mui/material/Unstable_Grid2/Grid2'
+import Container from '../../components/ui/Container'
+import Section from '../../components/ui/Section'
 
 export default function Hero() {
   return (
@@ -19,17 +19,17 @@ export default function Hero() {
               into elegant, efficient solutions
             </Typography>
             <Stack direction='row' spacing={2}>
-              <IconButton size='large'>
-                <Airlines fontSize='large' />
+              <IconButton size='large' color='secondary'>
+                <GitHub fontSize='large' />
               </IconButton>
-              <IconButton size='large'>
-                <DirtyLens fontSize='large' />
+              <IconButton size='large' color='secondary'>
+                <LinkedIn fontSize='large' />
               </IconButton>
-              <IconButton size='large'>
-                <Iso fontSize='large' />
+              <IconButton size='large' color='secondary'>
+                <Instagram fontSize='large' />
               </IconButton>
-              <IconButton size='large'>
-                <TwoWheeler fontSize='large' />
+              <IconButton size='large' color='secondary'>
+                <Headphones fontSize='large' />
               </IconButton>
             </Stack>
           </Grid>
