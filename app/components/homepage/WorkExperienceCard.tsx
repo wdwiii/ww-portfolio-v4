@@ -25,7 +25,7 @@ export const getWorkExperienceDetails: () => Promise<
             fallback: 'FW',
             company: 'FlowWest',
             position: 'Staff Software Engineer',
-            startYear: 2022,
+            startYear: 2023,
             endYear: 'Present',
           },
           {
@@ -34,8 +34,8 @@ export const getWorkExperienceDetails: () => Promise<
             fallback: 'FW',
             company: 'FlowWest',
             position: 'Junior Software Engineer',
-            startYear: 2021,
-            endYear: 2022,
+            startYear: 2022,
+            endYear: 2023,
           },
           {
             id: 3,
