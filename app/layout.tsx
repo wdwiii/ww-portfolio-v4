@@ -4,6 +4,7 @@ import { Inter } from 'next/font/google'
 import HideOnScroll from './components/navigation/HideOnScroll'
 import NavBar from './components/navigation/NavBar'
 import ThemeRegistry from './components/theme/ThemeRegistry'
+import Footer from './components/ui/Footer'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -42,6 +43,7 @@ export default function RootLayout({
             </HideOnScroll>
             <NavBar sx={{ display: 'none' }} />
             {children}
+            <Footer />
           </body>
         </html>
       </ThemeRegistry>
