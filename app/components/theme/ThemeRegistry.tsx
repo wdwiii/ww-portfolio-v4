@@ -1,15 +1,14 @@
 'use client'
-import React from 'react'
 import {
-  ThemeProvider,
-  ThemeOptions,
-  createTheme,
   CssBaseline,
   Theme,
+  ThemeOptions,
+  ThemeProvider,
+  createTheme,
   responsiveFontSizes,
 } from '@mui/material'
-import { blueGrey } from '@mui/material/colors'
-import { Roboto, Allura, Expletus_Sans, Hind } from 'next/font/google'
+import { Expletus_Sans, Hind, Roboto } from 'next/font/google'
+import React, { createContext, useMemo, useState } from 'react'
 
 import { NextAppDirEmotionCacheProvider } from './EmotionCache'
 
@@ -23,53 +22,83 @@ const expletusSans = Expletus_Sans({ weight: '400', subsets: ['latin'] })
 
 const hind = Hind({ weight: '400', subsets: ['latin'] })
 
-let theme: Theme = createTheme()
-
-const themeOptions: ThemeOptions = {
-  typography: {
-    fontFamily: [hind.style.fontFamily].join(', '),
-    display1: {
-      fontFamily: expletusSans.style.fontFamily,
-      fontSize: theme.typography.h2.fontSize,
-      [theme.breakpoints.down('sm')]: {
-        fontSize: theme.typography.h3.fontSize,
-        lineHeight: '3.5rem',
-      },
-    },
-    display2: {
-      fontFamily: expletusSans.style.fontFamily,
-      fontSize: theme.typography.h4.fontSize,
-      [theme.breakpoints.down('sm')]: {
-        fontSize: theme.typography.h5.fontSize,
-        lineHeight: '3.5rem',
-      },
-    },
-    h2: { fontWeight: 100 },
-  },
-  palette: {
-    primary: { main: '#0E343E' },
-    secondary: { main: '#F9BE4A' },
-    background: { default: 'f7f7f7' },
-
-    // text: { primary: blueGrey[50] },
-  },
-}
-
-theme = createTheme(themeOptions)
-
-theme = responsiveFontSizes(theme)
-
+export const ColorModeContext = createContext({ toggleColorMode: () => {} })
 export default function ThemeRegistry({
   children,
 }: {
   children: React.ReactNode
 }) {
+  const [mode, setMode] = useState<'light' | 'dark'>('light')
+  const colorMode = React.useMemo(
+    () => ({
+      // The dark mode switch would invoke this method
+      toggleColorMode: () => {
+        setMode(prevMode => (prevMode === 'light' ? 'dark' : 'light'))
+      },
+    }),
+    []
+  )
+  let newTheme: Theme = useMemo(() => {
+    let theme = createTheme({
+      palette: {
+        primary: { main: '#0E343E' },
+        secondary: { main: '#F9BE4A' },
+      },
+    })
+    const themeOptions: ThemeOptions = {
+      typography: {
+        fontFamily: [hind.style.fontFamily].join(', '),
+        display1: {
+          fontFamily: expletusSans.style.fontFamily,
+          fontSize: theme.typography.h2.fontSize,
+          [theme.breakpoints.down('sm')]: {
+            fontSize: theme.typography.h3.fontSize,
+            lineHeight: '3.5rem',
+          },
+        },
+        display2: {
+          fontFamily: expletusSans.style.fontFamily,
+          fontSize: theme.typography.h4.fontSize,
+          [theme.breakpoints.down('sm')]: {
+            fontSize: theme.typography.h5.fontSize,
+            lineHeight: '3.5rem',
+          },
+        },
+        h2: { fontWeight: 100 },
+      },
+      palette: {
+        mode,
+        ...(mode === 'light'
+          ? {
+              primary: { main: '#0E343E' },
+              secondary: { main: '#F9BE4A' },
+              background: { default: theme.palette.common.white },
+            }
+          : {
+              primary: { main: '#0E343E' },
+              secondary: { main: '#F9BE4A' },
+              background: { default: theme.palette.grey[900] },
+            }),
+        text: {
+          ...(mode === 'light'
+            ? { primary: theme.palette.common.black }
+            : { primary: theme.palette.common.white }),
+        },
+      },
+    }
+    theme = createTheme(themeOptions)
+    theme = responsiveFontSizes(theme)
+    return theme
+  }, [mode])
+
   return (
     <NextAppDirEmotionCacheProvider options={{ key: 'mui' }}>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        {children}
-      </ThemeProvider>
+      <ColorModeContext.Provider value={colorMode}>
+        <ThemeProvider theme={newTheme}>
+          <CssBaseline />
+          {children}
+        </ThemeProvider>
+      </ColorModeContext.Provider>
     </NextAppDirEmotionCacheProvider>
   )
 }

@@ -1,7 +1,7 @@
-import React from 'react'
+'use client'
+import { Container, Paper, Stack } from '@mui/material'
 import Section from '../ui/Section'
 import ImageCard from './ImageCard'
-import { Stack, Container } from '@mui/material'
 
 const ImageGallery = () => {
   return (
@@ -14,7 +14,8 @@ const ImageGallery = () => {
     >
       <Container
         maxWidth='lg'
-        sx={{ bgcolor: 'white', height: { xs: 400, sm: 500 } }}
+        component={Paper}
+        sx={{ height: { xs: 400, sm: 500 } }}
       />
       <Stack
         direction='row'

@@ -1,8 +1,7 @@
 'use client'
 
-import React from 'react'
+import { LinkProps, Link as MuiLink } from '@mui/material'
 import NextLink from 'next/link'
-import { Link as MuiLink, LinkProps } from '@mui/material'
 import { usePathname } from 'next/navigation'
 
 export default function NavLink({ href, children, ...linkProps }: LinkProps) {
@@ -20,7 +19,11 @@ export default function NavLink({ href, children, ...linkProps }: LinkProps) {
         return {
           textDecoration: active ? 'underline' : 'none',
           position: 'relative',
-          backgroundImage: `linear-gradient(to right, ${secondaryColor}, ${secondaryColor} 50%, #000 50% )`,
+          backgroundImage: `linear-gradient(to right, ${secondaryColor}, ${secondaryColor} 50%, ${
+            theme.palette.mode === 'light'
+              ? theme.palette.common.black
+              : theme.palette.common.white
+          } 50% )`,
           backgroundSize: '200% 100%',
           backgroundPosition: '-100%',
           ' -webkit-background-clip': 'text',

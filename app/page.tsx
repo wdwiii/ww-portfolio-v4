@@ -1,13 +1,12 @@
-import { Stack, Card, CardContent } from '@mui/material'
+import { Headphones } from '@mui/icons-material'
+import { Card, CardContent, Stack, Typography } from '@mui/material'
 import Grid from '@mui/material/Unstable_Grid2/Grid2'
+import { Spotify } from 'react-spotify-embed'
 import Hero from './components/homepage/Hero'
 import ImageGallery from './components/homepage/ImageGallery'
 import SubscribeForm from './components/homepage/SubscribeForm'
 import WorkExperienceCard from './components/homepage/WorkExperienceCard'
 import Container from './components/ui/Container'
-import { Spotify } from 'react-spotify-embed'
-import { Typography } from '@mui/material'
-import { Headphones } from '@mui/icons-material'
 
 export default async function Home() {
   return (
@@ -22,7 +21,7 @@ export default async function Home() {
                 <Stack height='100%' spacing={1}>
                   <Stack direction='row' spacing={1} alignItems='center'>
                     <Headphones />
-                    <Typography variant='h6' component='h2' color='initial'>
+                    <Typography variant='h6' component='h2'>
                       What I&apos;m Listening To
                     </Typography>
                   </Stack>

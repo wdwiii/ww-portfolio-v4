@@ -1,16 +1,16 @@
 'use client'
-
 import { Brightness4Outlined } from '@mui/icons-material'
 import {
   Box,
   BoxProps,
-  Container,
-  ContainerProps,
   IconButton,
+  Paper,
   Stack,
   useMediaQuery,
   useTheme,
 } from '@mui/material'
+import { useContext } from 'react'
+import { ColorModeContext } from '../theme/ThemeRegistry'
 import MobileNavLogo from './MobileNavLogo'
 import MobileNavMenu from './MobileNavMenu'
 import NavLogo from './NavLogo'
@@ -19,30 +19,42 @@ import NavMenu from './NavMenu'
 export default function NavBar(props: BoxProps) {
   const theme = useTheme()
   const matches = useMediaQuery(theme.breakpoints.up('lg'))
+  const isLightTheme = theme.palette.mode === 'light'
+  const { toggleColorMode } = useContext(ColorModeContext)
 
   return (
     <Box {...props} width='100%' maxWidth={1700}>
       <Stack
         direction='row'
         alignItems={'center'}
-        sx={{
-          background: '#fff',
-          boxShadow: '5px 5px 10px hsla(0, 0%, 0%, 0.25)',
+        component={Paper}
+        sx={theme => ({
+          background: isLightTheme
+            ? theme.palette.common.white
+            : theme.palette.grey[800],
           width: '100%',
           maxWidth: 1800,
           px: 10,
           py: 1,
           borderRadius: 50,
-        }}
+        })}
       >
         {matches ? (
           <>
-            <NavLogo height={30} src='/assets/logo.png' />
+            <NavLogo
+              height={30}
+              src={`/assets/${isLightTheme ? 'logo' : 'logo-alt'}.png`}
+            />
             <NavMenu />
           </>
         ) : (
           <>
-            <MobileNavLogo height={30} src='/assets/secondary-logo.png' />
+            <MobileNavLogo
+              height={30}
+              src={`/assets/${
+                isLightTheme ? 'secondary-logo' : 'secondary-logo-alt'
+              }.png`}
+            />
             <MobileNavMenu />
           </>
         )}
@@ -53,8 +65,11 @@ export default function NavBar(props: BoxProps) {
           marginLeft={matches ? 0 : 5}
         >
           <IconButton
+            onClick={toggleColorMode}
             sx={theme => ({
-              color: 'hsla(0, 0%, 0%, 0.54)',
+              color: isLightTheme
+                ? theme.palette.grey[800]
+                : theme.palette.common.white,
               '&:hover': { color: theme.palette.secondary.main },
             })}
           >

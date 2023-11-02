@@ -1,4 +1,3 @@
-import React from 'react'
 import { Card } from '@mui/material'
 import Image from 'next/image'
 
@@ -18,7 +17,7 @@ const ImageCard = ({ src }: { src: string }) => {
         alt='baby photo'
         fill
         objectFit='cover'
-        objectPosition='center'
+        sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
       />
     </Card>
   )

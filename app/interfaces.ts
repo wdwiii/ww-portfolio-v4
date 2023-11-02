@@ -7,3 +7,5 @@ export interface WorkDetails {
   startYear: number
   endYear: number | 'Present'
 }
+
+export type PaletteMode = 'light' | 'dark'
