@@ -13,7 +13,7 @@ const ImageGallery = () => {
       flexDirection='column'
     >
       <Container
-        maxWidth='lg'
+        maxWidth='xl'
         component={Paper}
         sx={{ height: { xs: 400, sm: 500 } }}
       />
@@ -23,7 +23,7 @@ const ImageGallery = () => {
         justifyContent='center'
         flexShrink={0}
         position='absolute'
-        sx={{ width: { xs: 1000, sm: 1700 } }}
+        sx={{ width: { xs: 1000, sm: 1800 } }}
       >
         <ImageCard src='/assets/baby.jpg' />
         <ImageCard src='/assets/basketball.png' />
