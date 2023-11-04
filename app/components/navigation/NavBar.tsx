@@ -1,5 +1,5 @@
 'use client'
-import { Brightness4Outlined } from '@mui/icons-material'
+import { LightMode, DarkModeOutlined } from '@mui/icons-material'
 import {
   Box,
   BoxProps,
@@ -18,7 +18,7 @@ import NavMenu from './NavMenu'
 
 export default function NavBar(props: BoxProps) {
   const theme = useTheme()
-  const matches = useMediaQuery(theme.breakpoints.up('lg'))
+  const matches = useMediaQuery(theme.breakpoints.up('md'))
   const isLightTheme = theme.palette.mode === 'light'
   const { toggleColorMode } = useContext(ColorModeContext)
 
@@ -42,7 +42,7 @@ export default function NavBar(props: BoxProps) {
         {matches ? (
           <>
             <NavLogo
-              height={30}
+              height={38}
               src={`/assets/${isLightTheme ? 'logo' : 'logo-alt'}.png`}
             />
             <NavMenu />
@@ -50,7 +50,7 @@ export default function NavBar(props: BoxProps) {
         ) : (
           <>
             <MobileNavLogo
-              height={30}
+              height={38}
               src={`/assets/${
                 isLightTheme ? 'secondary-logo' : 'secondary-logo-alt'
               }.png`}
@@ -65,6 +65,7 @@ export default function NavBar(props: BoxProps) {
           marginLeft={matches ? 0 : 5}
         >
           <IconButton
+            size='large'
             onClick={toggleColorMode}
             sx={theme => ({
               color: isLightTheme
@@ -73,7 +74,11 @@ export default function NavBar(props: BoxProps) {
               '&:hover': { color: theme.palette.secondary.main },
             })}
           >
-            <Brightness4Outlined />
+            {isLightTheme ? (
+              <DarkModeOutlined fontSize='large' />
+            ) : (
+              <LightMode fontSize='large' />
+            )}
           </IconButton>
         </Box>
       </Stack>
