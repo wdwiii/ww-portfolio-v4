@@ -9,9 +9,21 @@ const ProjectListItem = () => {
     console.log('Tag button clicked')
   }
   return (
-    <ListItemButton>
-      <Grid container width={'100%'} spacing={2}>
-        <Grid xs={4} position='relative' pt={1}>
+    <ListItemButton sx={{ maxWidth: { xs: 350, sm: 'none' } }}>
+      <Grid
+        container
+        width={'100%'}
+        spacing={2}
+        // sx={{ flexDirection: { xs: 'column', sm: 'row' } }}
+      >
+        <Grid
+          xs={12}
+          sm={6}
+          md={12}
+          position='relative'
+          pt={1}
+          sx={{ height: { xs: 200 } }}
+        >
           <Image
             src='/assets/thumbnails/wwportfolio.png'
             alt='williewhitfield.com thumbnail'
@@ -20,17 +32,17 @@ const ProjectListItem = () => {
             objectPosition='8px center'
           />
         </Grid>
-        <Grid xs={8}>
+        <Grid xs={12} sm={6} md={12}>
           <Typography variant='h6' component='h3'>
             WillieWhitfield.com (V4)
           </Typography>
-          <Typography variant='body1'>
+          <Typography variant='body1' sx={{ maxWidth: { md: 350, lg: 450 } }}>
             Revitalized and elevated user experience by implementing a sleek and
             responsive redesign of a web development portfolio using Next.js,
             showcasing enhanced functionality and modern design principles.
           </Typography>
         </Grid>
-        <Grid xs={8} marginLeft='auto'>
+        <Grid xs={8} sm={6} smOffset={6} mdOffset={0}>
           <Stack direction='row' spacing={1}>
             <Chip label='Next.js' onClick={handleTagClick} />
             <Chip label='MUI' onClick={handleTagClick} />

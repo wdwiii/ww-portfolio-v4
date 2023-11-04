@@ -5,8 +5,13 @@ import ProjectListItem from './ProjectListItem'
 const RecentProjects = () => (
   <Card>
     <CardContent>
-      <Stack height='100%' spacing={2}>
-        <Stack direction='row' spacing={1} alignItems='center'>
+      <Stack height='100%' spacing={3} alignItems='center'>
+        <Stack
+          direction='row'
+          spacing={1}
+          alignItems='center'
+          alignSelf='flex-start'
+        >
           <DesignServicesOutlined sx={{ fontSize: 28 }} />
           <Typography variant='h5' component='h2'>
             Recent Projects
