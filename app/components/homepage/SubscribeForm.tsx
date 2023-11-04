@@ -17,8 +17,8 @@ export default function SubscribeForm() {
       <CardContent>
         <Stack spacing={0}>
           <Stack direction='row' alignItems='center' spacing={1}>
-            <MailOutlineIcon />
-            <Typography variant='h6' component='h2'>
+            <MailOutlineIcon sx={{ fontSize: 28 }} />
+            <Typography variant='h5' component='h2'>
               Stay up to date
             </Typography>
           </Stack>
