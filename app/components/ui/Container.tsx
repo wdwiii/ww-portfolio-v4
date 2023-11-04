@@ -5,7 +5,7 @@ export default function Container({ children, sx, ...props }: ContainerProps) {
   return (
     <MuiContainer
       {...props}
-      maxWidth='xl'
+      maxWidth='lg'
       sx={
         sx
           ? sx
