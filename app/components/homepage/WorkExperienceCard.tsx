@@ -9,7 +9,7 @@ import {
   Typography,
 } from '@mui/material'
 import WorkOutline from '@mui/icons-material/WorkOutline'
-import WorkListItem from '../ui/WorkListItem'
+import WorkListItem from './WorkListItem'
 import { WorkDetails } from '@/app/interfaces'
 
 export const getWorkExperienceDetails: () => Promise<
@@ -77,8 +77,8 @@ const WorkExperienceCard = async () => {
     <Card>
       <CardContent>
         <Stack direction='row' alignItems='center' spacing={1}>
-          <WorkOutline />
-          <Typography variant='h6' component='h2'>
+          <WorkOutline sx={{ fontSize: 28 }} />
+          <Typography variant='h5' component='h2'>
             Work
           </Typography>
         </Stack>
@@ -88,7 +88,7 @@ const WorkExperienceCard = async () => {
           ))}
           <Divider variant='inset' component='li' />
         </List>
-        <Button size='large' fullWidth color='primary' variant='outlined'>
+        <Button size='large' fullWidth color='secondary' variant='outlined'>
           Download Resume
         </Button>
       </CardContent>

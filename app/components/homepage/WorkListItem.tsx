@@ -1,3 +1,4 @@
+'use client'
 import React from 'react'
 import {
   ListItem as MuiListItem,
@@ -17,17 +18,29 @@ const WorkListItem = ({
   return (
     <MuiListItem alignItems='flex-start'>
       <ListItemAvatar>
-        <Avatar src={src || ''}>{fallback}</Avatar>
+        <Avatar src={src || ''} sx={{ width: 50, height: 50 }}>
+          {fallback}
+        </Avatar>
       </ListItemAvatar>
       <ListItemText
         disableTypography
-        primary={company}
+        primary={
+          <Typography variant='h6' component='span'>
+            {company}
+          </Typography>
+        }
         secondary={
-          <Stack direction='row' justifyContent='space-between'>
-            <Typography variant='body2' component='span'>
+          <Stack
+            direction='row'
+            sx={theme => ({ flexDirection: { xs: 'column', sm: 'row' } })}
+            justifyContent='space-between'
+          >
+            <Typography variant='body1' component='span'>
               {position}
             </Typography>
-            {`${startYear} - ${endYear}`}
+            <Typography variant='body1' component='span'>
+              {`${startYear} - ${endYear}`}
+            </Typography>
           </Stack>
         }
       />
