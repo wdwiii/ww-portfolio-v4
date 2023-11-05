@@ -28,7 +28,7 @@ export default function ThemeRegistry({
 }: {
   children: React.ReactNode
 }) {
-  const [mode, setMode] = useState<'light' | 'dark'>('light')
+  const [mode, setMode] = useState<'light' | 'dark'>('dark')
   const colorMode = React.useMemo(
     () => ({
       // The dark mode switch would invoke this method
