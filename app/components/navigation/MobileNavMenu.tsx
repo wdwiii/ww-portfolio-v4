@@ -74,6 +74,7 @@ export default function MobileNavMenu() {
         disableRipple
         onClick={handleClick}
         endIcon={<KeyboardArrowDownIcon />}
+        color='secondary'
       >
         Menu
       </Button>
@@ -87,21 +88,16 @@ export default function MobileNavMenu() {
         onClose={handleClose}
       >
         <MenuItem onClick={handleClose} disableRipple>
-          <EditIcon />
-          Edit
+          Projects
         </MenuItem>
         <MenuItem onClick={handleClose} disableRipple>
-          <FileCopyIcon />
-          Duplicate
-        </MenuItem>
-        <Divider sx={{ my: 0.5 }} />
-        <MenuItem onClick={handleClose} disableRipple>
-          <ArchiveIcon />
-          Archive
+          About
         </MenuItem>
         <MenuItem onClick={handleClose} disableRipple>
-          <MoreHorizIcon />
-          More
+          Resume
+        </MenuItem>
+        <MenuItem onClick={handleClose} disableRipple>
+          Contact
         </MenuItem>
       </StyledMenu>
     </div>
