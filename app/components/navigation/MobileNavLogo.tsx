@@ -12,7 +12,7 @@ export default function MobileNavLogo({
   src: string
 }) {
   return (
-    <Link href='/' style={{ height, flex: 1 }}>
+    <Link href='/' style={{ height }}>
       <Image src={src} alt='logo' width={height * 0.94} height={height} />
     </Link>
   )

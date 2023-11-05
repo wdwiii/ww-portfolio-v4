@@ -11,6 +11,7 @@ const MobileNavigation = () => {
     <Stack
       direction='row'
       alignItems={'center'}
+      justifyContent='space-between'
       component={Paper}
       sx={{
         background: isLightTheme
