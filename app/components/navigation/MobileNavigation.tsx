@@ -22,6 +22,8 @@ const MobileNavigation = () => {
         py: 1,
         borderRadius: 50,
         display: { md: 'none' },
+        position: 'relative',
+        zIndex: 2400,
       }}
     >
       <MobileNavLogo
