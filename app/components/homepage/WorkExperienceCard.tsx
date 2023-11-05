@@ -1,6 +1,5 @@
 import React from 'react'
 import {
-  Button,
   Card,
   CardContent,
   Stack,
@@ -8,6 +7,7 @@ import {
   Divider,
   Typography,
 } from '@mui/material'
+import Button from '../ui/Button'
 import WorkOutline from '@mui/icons-material/WorkOutline'
 import WorkListItem from './WorkListItem'
 import { WorkDetails } from '@/app/interfaces'
@@ -88,7 +88,7 @@ const WorkExperienceCard = async () => {
           ))}
           <Divider variant='inset' component='li' />
         </List>
-        <Button size='large' fullWidth color='secondary' variant='outlined'>
+        <Button size='large' fullWidth variant='outlined'>
           Download Resume
         </Button>
       </CardContent>

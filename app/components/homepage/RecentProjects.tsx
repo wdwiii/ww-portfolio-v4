@@ -1,5 +1,6 @@
 import { DesignServicesOutlined } from '@mui/icons-material'
-import { Button, Card, CardContent, Stack, Typography } from '@mui/material'
+import { Card, CardContent, Stack, Typography } from '@mui/material'
+import Button from '../ui/Button'
 import ProjectListItem from './ProjectListItem'
 
 const RecentProjects = () => (
@@ -20,7 +21,7 @@ const RecentProjects = () => (
         <ProjectListItem />
         <ProjectListItem />
         <ProjectListItem />
-        <Button color='secondary' variant='outlined' sx={{ ml: 'auto' }}>
+        <Button variant='outlined' sx={{ ml: 'auto' }} fullWidth>
           View Project Archive
         </Button>
       </Stack>
