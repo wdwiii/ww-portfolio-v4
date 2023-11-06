@@ -3,12 +3,13 @@ import { IconButton, Stack, Typography } from '@mui/material'
 import Grid from '@mui/material/Unstable_Grid2/Grid2'
 import Container from '../../components/ui/Container'
 import Section from '../../components/ui/Section'
+import PaddedGridContainer from '../ui/PaddedGridContainer'
 
 export default function Hero() {
   return (
     <Section>
       <Container>
-        <Grid container sx={{ pt: 18, pb: 10 }}>
+        <PaddedGridContainer>
           <Grid lg={8}>
             <Typography variant='h1'>Coding, Basketball, and Music</Typography>{' '}
             <Typography variant='h6' component='p' gutterBottom>
@@ -33,7 +34,7 @@ export default function Hero() {
               </IconButton>
             </Stack>
           </Grid>
-        </Grid>
+        </PaddedGridContainer>
       </Container>
     </Section>
   )
