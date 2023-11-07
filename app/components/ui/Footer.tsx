@@ -42,7 +42,7 @@ const Footer = () => {
 
   const isLightTheme = theme.palette.mode === 'light'
   return (
-    <Container component={Paper} sx={{ pb: 2 }}>
+    <Container component={Paper} sx={{ pt: 4, pb: 2 }}>
       <Divider />
       <Box
         mt={3}
