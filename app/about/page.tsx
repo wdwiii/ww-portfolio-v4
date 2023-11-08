@@ -8,13 +8,33 @@ import AboutTabs from '../components/about/AboutTabs'
 import Image from 'next/image'
 import { Miniver } from 'next/font/google'
 import ImageList from '../components/about/ImageList'
-
+import BioTab from '../components/about/BioTab'
+import ExperienceTab from '../components/about/ExperienceTab'
+import EducationTab from '../components/about/EducationTab'
+import ToolkitTab from '../components/about/ToolkitTab'
+import { useSearchParams } from 'next/navigation'
 const miniver = Miniver({
   weight: '400',
   subsets: ['latin'],
 })
 
-const page = () => {
+const AboutPage = () => {
+  const tabPanelValue = useSearchParams()
+  console.log('🚀 ~ AboutPageLayout ~ searchParams:', tabPanelValue.get('tab'))
+
+  const TabPanel = () => {
+    switch (tabPanelValue.get('tab')) {
+      case 'experience':
+        return <ExperienceTab />
+      case 'education':
+        return <EducationTab />
+      case 'toolkit':
+        return <ToolkitTab />
+      default:
+        return <BioTab />
+    }
+  }
+
   return (
     <Container>
       <PaddedGridContainer spacing={2}>
@@ -24,47 +44,7 @@ const page = () => {
               Hey there! I'm Willie Whitfield, a frontend software developer
             </Typography>
             <AboutTabs />
-            <Typography variant='body1'>
-              I'm on a mission to turn lines of code into remarkable digital
-              experiences. With a knack for problem-solving and a love for
-              elegant solutions, I thrive in the ever-evolving world of
-              technology.
-            </Typography>
-            <Typography variant='body1'>
-              My journey in the realm of coding began [X] years ago, and since
-              then, I've been on a relentless pursuit of mastering the art and
-              science of software development. From crafting clean and efficient
-              code to diving into the intricacies of algorithms, I find joy in
-              the details that make software truly exceptional.
-            </Typography>
-            <Typography variant='body1'>
-              I specialize in [Your Tech Stack], but my hunger for learning
-              extends far beyond. Whether it's tackling complex challenges or
-              embracing new technologies, I see each project as an opportunity
-              to push boundaries and create something extraordinary.
-            </Typography>
-            <Typography variant='body1'>
-              Collaboration is at the core of my approach. I believe that the
-              best solutions emerge when diverse minds come together, and I'm
-              always eager to be part of a team that values innovation,
-              creativity, and a good dose of humor.
-            </Typography>
-            <Typography variant='body1'>
-              When I'm not immersed in code, you'll likely find me exploring the
-              latest tech trends, experimenting with side projects, or enjoying
-              a cup of coffee while pondering the next big idea.
-            </Typography>
-            <Typography variant='body1'>
-              Let's build something incredible together!
-            </Typography>
-            <Typography
-              align='center'
-              component='span'
-              fontFamily={miniver.style.fontFamily}
-              fontSize={72}
-            >
-              Willie
-            </Typography>
+            <TabPanel />
           </Stack>
         </Grid>
         <Grid md={6} sx={{ display: 'flex', justifyContent: 'center' }}>
@@ -92,4 +72,4 @@ const page = () => {
   )
 }
 
-export default page
+export default AboutPage
