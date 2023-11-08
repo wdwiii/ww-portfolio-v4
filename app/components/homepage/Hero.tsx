@@ -7,11 +7,11 @@ import Section from '../../components/ui/Section'
 export default function Hero() {
   return (
     <Section>
-      <Container maxWidth='lg'>
+      <Container>
         <Grid container sx={{ pt: 18, pb: 10 }}>
           <Grid lg={8}>
             <Typography variant='h1'>Coding, Basketball, and Music</Typography>{' '}
-            <Typography variant='body1' gutterBottom>
+            <Typography variant='h6' component='p' gutterBottom>
               Greetings! I&apos;m [Your Name], a passionate software developer
               on a perpetual quest to unravel the intricate dance between lines
               of code and the symphony they create. With a blend of creativity
