@@ -1,5 +1,8 @@
-import { Typography } from '@mui/material'
+import { Typography, List } from '@mui/material'
+import { getWorkExperienceDetails } from '../../components/homepage/WorkExperienceCard'
+import WorkListItem from '../../components/homepage/WorkListItem'
 import { Miniver } from 'next/font/google'
+import { useEffect, useState } from 'react'
 
 const miniver = Miniver({
   weight: '400',
@@ -7,9 +10,22 @@ const miniver = Miniver({
 })
 
 const ExperienceTab = () => {
+  const [workExperienceDetails, setWorkExperienceDetails] = useState<any>([])
+  useEffect(() => {
+    ;(async function () {
+      const work = await getWorkExperienceDetails()
+      console.log('🚀 ~ work:', work)
+
+      setWorkExperienceDetails(work)
+    })()
+  }, [])
   return (
     <>
-      <Typography variant='body1'>THIS IS THE EXPERIENCE TAB</Typography>
+      {workExperienceDetails.length > 0 ? (
+        <WorkListItem details={workExperienceDetails?.at(0) as any} />
+      ) : (
+        <p>Loading...</p>
+      )}
     </>
   )
 }

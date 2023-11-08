@@ -1,40 +1,20 @@
-'use client'
-import React from 'react'
-import PaddedGridContainer from '../components/ui/PaddedGridContainer'
-import Container from '../components/ui/Container'
+// 'use client'
+import { Box, Stack, Typography } from '@mui/material'
 import Grid from '@mui/material/Unstable_Grid2/Grid2'
-import { Box, Typography, Stack, Tabs, Tab } from '@mui/material'
-import AboutTabs from '../components/about/AboutTabs'
-import Image from 'next/image'
 import { Miniver } from 'next/font/google'
+import Image from 'next/image'
+import AboutTabs from '../components/about/AboutTabs'
 import ImageList from '../components/about/ImageList'
-import BioTab from '../components/about/BioTab'
-import ExperienceTab from '../components/about/ExperienceTab'
-import EducationTab from '../components/about/EducationTab'
-import ToolkitTab from '../components/about/ToolkitTab'
-import { useSearchParams } from 'next/navigation'
+import Container from '../components/ui/Container'
+import PaddedGridContainer from '../components/ui/PaddedGridContainer'
+import AboutTabPanel from '../components/about/AboutTabPanel'
+
 const miniver = Miniver({
   weight: '400',
   subsets: ['latin'],
 })
 
-const AboutPage = () => {
-  const tabPanelValue = useSearchParams()
-  console.log('🚀 ~ AboutPageLayout ~ searchParams:', tabPanelValue.get('tab'))
-
-  const TabPanel = () => {
-    switch (tabPanelValue.get('tab')) {
-      case 'experience':
-        return <ExperienceTab />
-      case 'education':
-        return <EducationTab />
-      case 'toolkit':
-        return <ToolkitTab />
-      default:
-        return <BioTab />
-    }
-  }
-
+const AboutPage = async () => {
   return (
     <Container>
       <PaddedGridContainer spacing={2}>
@@ -44,7 +24,7 @@ const AboutPage = () => {
               Hey there! I'm Willie Whitfield, a frontend software developer
             </Typography>
             <AboutTabs />
-            <TabPanel />
+            <AboutTabPanel />
           </Stack>
         </Grid>
         <Grid md={6} sx={{ display: 'flex', justifyContent: 'center' }}>

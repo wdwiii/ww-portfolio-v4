@@ -4,6 +4,7 @@ import { Tabs, Tab } from '@mui/material'
 import useThemeLogic from '@/app/hooks/useThemeLogic'
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
+
 const AboutTabs = () => {
   const [selectedTabValue, setSelectedTabValue] = useState<number>(1)
   const tabPanelValue = useSearchParams().get('tab')
